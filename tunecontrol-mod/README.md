@@ -11,48 +11,7 @@ It targets **Minecraft 1.20.1 with Forge** and runs only on your own computer (i
 
 > **Honest note:** this code was written without being able to compile it against Minecraft's real code. Earlier builds found a few small mistakes (all fixed). The in-game settings screen, the song list and the Now Playing pop-up are the newest parts and have not been tried in a real game yet, so if the build reports an error or a screen looks wrong, copy the message (or describe it) to Claude and it will be fixed quickly.
 
----
-
-## Part 1: One-time setup
-
-1. **Install Java 17** (a free "JDK"). Search for "Temurin JDK 17" and install it.
-2. **Install IntelliJ IDEA Community Edition** (free). It's the easiest editor for mods.
-3. **Download the Forge MDK for 1.20.1.** The MDK is Forge's starter project.
-   - Go to https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html
-   - Under "Download Recommended" click **Mdk**.
-   - Unzip it somewhere, for example `Documents/tunecontrol`.
-
-## Part 2: Put this mod into the starter project
-
-1. In the unzipped MDK, **delete the whole folder** `src/main/java/com/example` (the sample mod). It isn't part of this mod and can cause confusing errors.
-2. **Copy** this zip's `src` folder into the MDK, and choose "merge/replace" when asked. That adds `com/tunecontrol/...` and replaces `META-INF/mods.toml`.
-3. Open `gradle.properties` in the MDK and change **only** these lines:
-
-```
-mod_id=tunecontrol
-mod_name=Tune Control
-mod_version=1.0.0
-mod_group_id=com.tunecontrol
-mod_authors=YourNameHere
-mod_description=Customize Minecraft's background music: what plays, where, and how often.
-```
-
-   Leave the Minecraft/Forge version lines alone.
-
-## Part 3: Try it
-
-1. In IntelliJ choose **File > Open** and pick the MDK's `build.gradle`. Choose "Open as Project", and wait for the Gradle sync to finish (the first time takes several minutes).
-2. In a terminal inside the project folder run:
-   - Windows: `gradlew.bat runClient`
-   - Mac/Linux: `./gradlew runClient`
-
-   Minecraft starts with your mod loaded. Its settings file appears at `run/config/tunecontrol.json`.
-3. **Build the real mod file:** `gradlew build`. The `.jar` appears in `build/libs/`.
-4. **Install it for normal play:** install Forge 1.20.1 from the same Forge download page (the "Installer"), then drop the `.jar` into `.minecraft/mods`.
-
----
-
-## Part 4: Changing the music
+## Part 1: Changing the music
 
 There are two ways, and you can mix them: the **settings screen** in the game (easiest), or the **settings file** `config/tunecontrol.json` (inside the `run` folder while testing, inside `.minecraft/config` for normal play).
 
@@ -359,8 +318,6 @@ Music discs are ordinary sounds, such as `minecraft:music_disc.cat`. Songs from 
 | `pack.mcmeta` | Tiny metadata file Minecraft expects in every mod (without it Forge logs a harmless "ResourcePackInfo" warning) |
 
 ## Ideas for later
-
-- Fading songs in and out
 - Key bindings for previous / skip / stop (so you don't have to type commands)
 - Rules for boss fights, nearby mobs, or structures (villages, strongholds)
 - Ports to NeoForge or Minecraft 26.1
