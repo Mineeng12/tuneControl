@@ -1,0 +1,8 @@
+{
+  "forest_song": {
+    "category": "music",
+    "sounds": [
+      { "name": "mytunes:forest_song", "stream": true }
+    ]
+  }
+}

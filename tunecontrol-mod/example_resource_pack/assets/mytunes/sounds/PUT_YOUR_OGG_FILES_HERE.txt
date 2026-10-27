@@ -1,0 +1,7 @@
+Put your music here as .ogg files (Minecraft only plays Ogg Vorbis).
+
+The file name must match the "name" in ../sounds.json:
+  forest_song.ogg   <->   "name": "mytunes:forest_song"
+
+Then use "mytunes:forest_song" as a "sound" in config/tunecontrol.json.
+You can delete this text file once your .ogg is in place.
